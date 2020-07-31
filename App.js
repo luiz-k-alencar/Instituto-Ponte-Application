@@ -17,7 +17,7 @@ function Tabs() {
   return (
     <Tab.Navigator
             screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused, color, size }) => {
+          tabBarIcon: ({ color, size }) => {
             let iconName;
 
             if (route.name === 'Início') {
@@ -33,9 +33,6 @@ function Tabs() {
               iconName = 'map-marked-alt';
               return <FontAwesome5 name={iconName} size={size} color={color} />;
             }
-
-            // You can return any component that you like here!
-            return <Ionicons name={iconName} size={size} color={color} />;
           },
         })}
         tabBarOptions={{

@@ -1,25 +1,43 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, StyleSheet, Text, TouchableWithoutFeedback, Alert } from 'react-native';
-import { WebView } from 'react-native-webview';
+import { createStackNavigator} from '@react-navigation/stack';
+
+import Instituto from './SitePages/O-Instituto';
+import Seleção from './SitePages/Seleção-de-Alunos';
+import Contribua from './SitePages/Contribua';
+import Atuação from './SitePages/Como-Atuamos';
+import Parceiros from './SitePages/Parceiros';
+import Noticias from './SitePages/Noticias';
+
+const Stack = createStackNavigator();
+
+function StackScreen() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="O Instituto" component={Instituto} />
+      <Stack.Screen name="Seleção de Alunos" component={Seleção} />
+      <Stack.Screen name="Contribua" component={Contribua} />
+      <Stack.Screen name="Como Atuamos?" component={Atuação} />
+      <Stack.Screen name="Parceiros" component={Parceiros} />
+      <Stack.Screen name="Notícias" component={Noticias} />
+    </Stack.Navigator>
+  );
+}
 
 
-export default function Sobre() {
-  const [go, setGo] = useState(0);
-
-  switch (go) {
-    case 0:
+export default function Sobre({navigation}) {
       return (
         <View style={styles.container}>
           <View style={styles.buttonsView}>
             <View>
-              <TouchableWithoutFeedback onPress={() => setGo(1)}>
+              <TouchableWithoutFeedback onPress={() => navigation.navigate('O Instituto')}>
                 <View style={[styles.button, styles.menu]}>
                   <Text style={styles.buttonsText}> O Instituto </Text>
                 </View>
               </TouchableWithoutFeedback>
             </View>
             <View>
-              <TouchableWithoutFeedback onPress={() => setGo(2)}>
+              <TouchableWithoutFeedback onPress={() => navigation.navigate('Seleção de Alunos')}>
                 <View style={[styles.button, styles.menu]}>
                   <Text style={styles.buttonsText}> Seleção de</Text>
                   <Text style={styles.buttonsText}> Alunos</Text>
@@ -27,16 +45,16 @@ export default function Sobre() {
               </TouchableWithoutFeedback>
             </View>
             <View>
-              <TouchableWithoutFeedback onPress={() => setGo(3)}>
+              <TouchableWithoutFeedback onPress={() => navigation.navigate('Contribua')}>
                 <View style={[styles.button, styles.menu]}>
-                  <Text style={styles.buttonsText}> Projetos </Text>
+                  <Text style={styles.buttonsText}> Contribua </Text>
                 </View>
               </TouchableWithoutFeedback>
             </View>
           </View>
           <View style={styles.buttonsView} >
             <View>
-              <TouchableWithoutFeedback onPress={() => setGo(4)}>
+              <TouchableWithoutFeedback onPress={() => navigation.navigate('Como Atuamos?')}>
                 <View style={[styles.button, styles.menu]}>
                   <Text style={styles.buttonsText}> Como </Text>
                   <Text style={styles.buttonsText}> Atuamos? </Text>
@@ -44,14 +62,14 @@ export default function Sobre() {
               </TouchableWithoutFeedback>
             </View>
             <View>
-              <TouchableWithoutFeedback onPress={() => setGo(5)}>
+              <TouchableWithoutFeedback onPress={() => navigation.navigate('Parceiros')}>
                 <View style={[styles.button, styles.menu]}>
                   <Text style={styles.buttonsText}> Parceiros </Text>
                 </View>
               </TouchableWithoutFeedback>
             </View>
             <View>
-              <TouchableWithoutFeedback onPress={() => setGo(6)}>
+              <TouchableWithoutFeedback onPress={() => navigation.navigate('Notiícias')}>
                 <View style={[styles.button, styles.menu]}>
                   <Text style={styles.buttonsText}> Notícias </Text>
                 </View>
@@ -60,55 +78,9 @@ export default function Sobre() {
           </View>
         </View>
       )
-      break
-
-    case 1:
-      return (
-          <WebView style={{flex:1 }}
-            source={{ uri: 'https://reactnative.dev' }}
-          />       
-      )
-      break
-    case 2:
-      return (
-        <WebView
-          source={{ uri: 'https://www.nytimes.com/' }}
-        />
-      )
-      break
-    case 3:
-      return (
-        <WebView
-          source={{ uri: 'https://www.nytimes.com/' }}
-        />
-      )
-      break
-    case 4:
-      return (
-        <WebView
-          source={{ uri: 'https://www.nytimes.com/' }}
-        />
-      )
-      break
-    case 5:
-      return (
-        <WebView
-          source={{ uri: 'https://www.nytimes.com/' }}
-        />
-      )
-      break
-    case 6:
-      return (
-        <WebView
-          source={{ uri: 'https://www.nytimes.com/' }}
-        />
-      )
-      break
+     
   }
-}
 
-/* O Site do IP não está funcionando no momento. Quando ele retornar, lembrar de
-trocar as urls */
 
 const styles = StyleSheet.create({
   container: {
