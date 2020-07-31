@@ -4,8 +4,8 @@ import { WebView } from 'react-native-webview';
 
 export default function Mapa() {
   return (
-    <WebView
-      source={{ uri: 'https://goo.gl/maps/EdJ8tNDgv7N3Qd3GA' }}
-    />
+    <View style={{ flex: 1, alignSelf: 'center', justifyContent: 'center'  }}>
+      <Text style={{ justifyContent: 'center',  }}> Mapa </Text>     
+    </View>
   );
 }
