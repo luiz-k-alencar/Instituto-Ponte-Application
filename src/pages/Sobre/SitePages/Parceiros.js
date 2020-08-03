@@ -1,3 +1,6 @@
+import React from 'react';
+import WebView from 'react-native-webview'
+
 export default function Parceiros() {
   return (
     <WebView style={{ flex: 1 }}
