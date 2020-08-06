@@ -7,25 +7,28 @@ import {
   Button,
   Alert,
   ScrollView, 
+  Dimensions
 } from 'react-native';
 
+const { width } = Dimensions.get('window');
 
 export default function Inicio({ navigation }) {
   return (
 
+
     <View style={styles.container}>
       <ScrollView>
         <View style={styles.ImageContainer}>
-          <Image
+          <Image style={{width: width}}
             source={require('./Imagens/IP.jpg')}
           />
-          <Image
+          <Image style={{width: width}}
             source={require('./Imagens/Resultados.jpg')}
           />
-          <Image
+          <Image style={{width: width}}
             source={require('./Imagens/Valores1.png')}
           />
-          <Image
+          <Image style={{width: width}}
             source={require('./Imagens/Valores2.png')}
           />
         </View>
@@ -43,7 +46,8 @@ const styles = StyleSheet.create({
   ImageContainer: {
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'flex-start'
+    justifyContent: 'flex-start',
+    width: width
   },
   pagination: {
     flexDirection: 'row',
