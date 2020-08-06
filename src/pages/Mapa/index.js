@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { ScrollView, View, Text, StyleSheet, Dimensions,Image } from 'react-native';
+import { ScrollView, View, Text, StyleSheet, Dimensions, Image, ImageBackground } from 'react-native';
 import MapView from 'react-native-maps';
+
 
 const { height, width } = Dimensions.get('window');
 
@@ -10,16 +11,20 @@ export default class Mapa extends Component {
       {
         id: 1,
         title: 'Instituto Ponte Pedagógico',
-        description: 'Instituto João XXIII, 2º Andar',
+        description: 'Localizado no Instituto João XXIII, 2º Andar. Ao lado da antiga fábrica da Le Chocolatier e em frente à creche Laurentina Mendonça Corrêa.',
+        address: 'R. Profa. Anisía Corrêa Rocha, 131 - Consolação',
         latitude: -20.3073323,
         longitude: -40.3107429,
+        img: <Image source={require('./Imagens/joao-xxiii.png')} />
       },
       {
         id: 2,
         title: 'Instituto Ponte Escritório',
-        description: 'Ed. Centro Empresarial, Torre Central, sala 604',
+        description: 'Ed. Centro Empresarial, Torre Central, sala 604. Torre localizada ao lado da Pedra da Cebola.',
+        address: 'Av. Fernando Ferrari, 1080 - Mata da Praia',
         latitude: -20.2767843,
         longitude: -40.3006037,
+        img: <Image source={require('./Imagens/centro-empresarial.png')} />
       }
     ]
   };
@@ -53,7 +58,7 @@ export default class Mapa extends Component {
             <MapView.Marker
               ref={mark => place.mark = mark}
               title={place.title}
-              description={place.description}
+              description={place.address}
               key={place.id}
               coordinate={{
                 latitude: place.latitude,
@@ -70,29 +75,29 @@ export default class Mapa extends Component {
           onMomentumScrollEnd={e => {
             const scrolled = e.nativeEvent.contentOffset.x;
             const { width } = Dimensions.get('window');
-            
+
             const place = (scrolled > 0)
               ? 1
               : 0;
 
-              const { latitude, longitude, mark } = this.state.places[place];
+            const { latitude, longitude, mark } = this.state.places[place];
 
-              this.mapView.animateToCoordinate({
-                latitude,
-                longitude
-              }, 1000);
+            this.mapView.animateToCoordinate({
+              latitude,
+              longitude
+            }, 1000);
 
-              setTimeout(() => {
-                mark.showCallout()
-              }, 1000)
+            setTimeout(() => {
+              mark.showCallout()
+            }, 1000)
           }}
         >
           {this.state.places.map(place => (
             <View key={place.id} style={styles.place}>
               <Text style={styles.title}>{place.title}</Text>
               <Text style={styles.description}>{place.description}</Text>
-              <Image source={require('./Imagens/icon.png')}/>
-            </View>           
+              <ImageBackground style={styles.img}>{place.img}</ImageBackground>
+            </View>
           ))}
         </ScrollView>
       </View>
@@ -118,19 +123,19 @@ const styles = StyleSheet.create({
 
   placesContainer: {
     width: '100%',
-    maxHeight: 200
+    maxHeight: 300
   },
 
   place: {
     width: width - 40,
-    maxHeight: 200,
+    maxHeight: 300,
     backgroundColor: '#FFF',
     marginHorizontal: 20,
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
     padding: 20,
   },
-  
+
   title: {
     fontWeight: 'bold',
     fontSize: 18,
@@ -142,4 +147,10 @@ const styles = StyleSheet.create({
     fontSize: 12,
     marginTop: 5,
   },
+
+  img: {
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    overflow: "hidden"
+  }
 });
