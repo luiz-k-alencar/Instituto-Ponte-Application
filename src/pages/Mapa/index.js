@@ -10,7 +10,7 @@ export default class Mapa extends Component {
     places: [
       {
         id: 1,
-        title: 'Instituto Ponte Pedagógico',
+        title: 'Instituto Ponte - Pedagógico',
         description: 'Localizado no Instituto João XXIII, 2º Andar. Ao lado da antiga fábrica da Le Chocolatier e em frente à creche Laurentina Mendonça Corrêa.',
         address: 'R. Profa. Anisía Corrêa Rocha, 131 - Consolação',
         latitude: -20.3073323,
@@ -19,7 +19,7 @@ export default class Mapa extends Component {
       },
       {
         id: 2,
-        title: 'Instituto Ponte Escritório',
+        title: 'Instituto Ponte - Escritório',
         description: 'Ed. Centro Empresarial, Torre Central, sala 604. Torre localizada ao lado da Pedra da Cebola.',
         address: 'Av. Fernando Ferrari, 1080 - Mata da Praia',
         latitude: -20.2767843,
@@ -43,7 +43,7 @@ export default class Mapa extends Component {
           initialRegion={{
             latitude,
             longitude,
-            latitudeDelta: 0.034,
+            latitudeDelta: 0.017,
             longitudeDelta: 0.025,
           }}
           style={styles.MapView}
@@ -82,9 +82,8 @@ export default class Mapa extends Component {
 
             const { latitude, longitude, mark } = this.state.places[place];
 
-            this.mapView.animateToCoordinate({
-              latitude,
-              longitude
+            this.mapView.animateCamera({
+              center: {latitude:latitude, longitude:longitude},
             }, 1000);
 
             setTimeout(() => {
@@ -123,12 +122,12 @@ const styles = StyleSheet.create({
 
   placesContainer: {
     width: '100%',
-    maxHeight: 300
+    maxHeight: 280
   },
 
   place: {
     width: width - 40,
-    maxHeight: 300,
+    maxHeight: 280,
     backgroundColor: '#FFF',
     marginHorizontal: 20,
     borderTopLeftRadius: 10,
