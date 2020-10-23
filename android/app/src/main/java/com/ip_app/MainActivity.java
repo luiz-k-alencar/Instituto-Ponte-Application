@@ -1,4 +1,4 @@
-package com.institutoponteapp;
+package com.ip_app;
 
 import com.facebook.react.ReactActivity;
 
@@ -10,6 +10,6 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "InstitutoPonteApp";
+    return "IP_App";
   }
 }
