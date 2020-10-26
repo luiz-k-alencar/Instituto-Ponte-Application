@@ -3,9 +3,6 @@ import {
   StyleSheet,
   View,
   Image,
-  Text,
-  Button,
-  Alert,
   ScrollView, 
   Dimensions
 } from 'react-native';

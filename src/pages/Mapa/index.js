@@ -122,12 +122,12 @@ const styles = StyleSheet.create({
 
   placesContainer: {
     width: '100%',
-    maxHeight: 280
+    maxHeight: (height/2) - 100
   },
 
   place: {
     width: width - 40,
-    maxHeight: 280,
+    maxHeight: (height/2) - 100,
     backgroundColor: '#FFF',
     marginHorizontal: 20,
     borderTopLeftRadius: 10,
@@ -153,3 +153,4 @@ const styles = StyleSheet.create({
     overflow: "hidden"
   }
 });
+
